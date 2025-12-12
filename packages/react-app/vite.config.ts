@@ -1,20 +1,13 @@
-/// <reference types="vitest/config" />
-
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import svgr from 'vite-plugin-svgr'
 import tsConfigPaths from 'vite-tsconfig-paths'
+import { mergeConfig, defineConfig as vitestDefineConfig } from 'vitest/config'
 import config from './config'
 
-export default defineConfig({
-  test: {
-    globals: true,
-    coverage: {
-      provider: 'v8',
-    },
-  },
+const viteConfig = defineConfig({
   server: {
     port: config.get('port'),
   },
@@ -29,3 +22,14 @@ export default defineConfig({
     tailwindcss(),
   ],
 })
+
+const vitestConfig = vitestDefineConfig({
+  test: {
+    globals: true,
+    coverage: {
+      provider: 'v8',
+    },
+  },
+})
+
+export default mergeConfig(viteConfig, vitestConfig)
