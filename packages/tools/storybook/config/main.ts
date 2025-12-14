@@ -1,22 +1,12 @@
-import { dirname } from 'node:path'
+import type { StorybookConfig } from '@storybook/react-vite'
 
-import { fileURLToPath } from 'node:url'
-
-/**
- * This function is used to resolve the absolute path of a package.
- * It is needed in projects that use Yarn PnP or are set up within a monorepo.
- */
-function getAbsolutePath(value: string) {
-  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)))
-}
-
-/** @type { import('@storybook/react-vite').StorybookConfig } */
-const config = {
-  stories: ['../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+const config: StorybookConfig = {
+  stories: [{ directory: '../stories' }],
   addons: [],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {},
   },
 }
+
 export default config

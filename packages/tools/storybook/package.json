@@ -6,12 +6,21 @@
   },
   "devDependencies": {
     "@storybook/react-vite": "^10.0.7",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.7",
+    "@vitejs/plugin-react": "^5.1.2",
     "prop-types": "^15.8.1",
+    "react": "^19.2.3",
+    "react-app": "workspace:*",
+    "react-dom": "^19.2.3",
     "storybook": "^10.0.7",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^7.2.7",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "scripts": {
     "open": "storybook dev -p 6006 -c config",
-    "build": "storybook build"
+    "build": "storybook build",
+    "bun": "bun"
   }
 }
